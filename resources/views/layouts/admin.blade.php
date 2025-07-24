@@ -184,7 +184,10 @@
         <h1>Admin Panel</h1>
         <div class="user-info">
             <span>Welcome, Admin</span>
-            <a href="#" class="btn btn-secondary">Logout</a>
+            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn btn-secondary">Logout</button>
+            </form>
         </div>
     </nav>
     
@@ -207,6 +210,7 @@
     </div>
 </body>
 </html>
+
 
 
 

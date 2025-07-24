@@ -14,25 +14,32 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminRole = Role::create(['name' => 'admin']);
-        $userRole = Role::create(['name' => 'user']);
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $userRole = Role::firstOrCreate(['name' => 'user']);
 
         //Role admin
         $admin = User::firstOrCreate([
-            'name' => 'Admin',
             'email' => 'admin@gmail.com',
+        ], [
+            'name' => 'Admin',
             'password' => bcrypt('admin123'),
         ]);
 
-        $admin->assignRole($adminRole);
+        if (!$admin->hasRole($adminRole)) {
+            $admin->assignRole($adminRole);
+        }
 
         //Role user
         $user = User::firstOrCreate([
-            'name' => 'User',
             'email' => 'user@gmail.com',
+        ], [
+            'name' => 'User',
             'password' => bcrypt('user123'),
         ]);
 
-        $user->assignRole($userRole);
+        if (!$user->hasRole($userRole)) {
+            $user->assignRole($userRole);
+        }
     }
 }
+

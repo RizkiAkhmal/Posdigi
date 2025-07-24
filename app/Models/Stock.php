@@ -28,5 +28,11 @@ class Stock extends Model
     {
         return $this->belongsTo(Buku::class, 'id_buku');
     }
+
+    public function peminjamans()
+    {
+        return $this->hasMany(Peminjaman::class, 'id_stock');
+    }
 }
+
 
