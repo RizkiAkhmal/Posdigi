@@ -16,6 +16,7 @@ class Peminjaman extends Model
         'id_stock',
         'tanggal_pinjam',
         'tanggal_kembali',
+        'jumlah',
         'status'
     ];
 
@@ -35,4 +36,5 @@ class Peminjaman extends Model
         return $this->belongsTo(Stock::class, 'id_stock');
     }
 }
+
 

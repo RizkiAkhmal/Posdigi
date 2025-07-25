@@ -44,7 +44,7 @@
                     <span class="status {{ $stock->status }}">{{ ucfirst($stock->status) }}</span>
                 </td>
                 <td>
-                    <a href="{{ route('admin.stock.show', $stock) }}" class="btn btn-info">Detail</a>
+                    {{-- <a href="{{ route('admin.stock.show', $stock) }}" class="btn btn-info">Detail</a> --}}
                     <a href="{{ route('admin.stock.edit', $stock) }}" class="btn btn-primary">Edit</a>
                     <form style="display:inline" method="POST" action="{{ route('admin.stock.destroy', $stock) }}">
                         @csrf

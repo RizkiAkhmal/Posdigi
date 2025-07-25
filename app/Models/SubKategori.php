@@ -18,8 +18,8 @@ class SubKategori extends Model
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 
-    public function subKategoris()
+    public function bukus()
     {
-        return $this->hasMany(Buku::class);
+        return $this->hasMany(Buku::class, 'id_sub_kategori');
     }
 }

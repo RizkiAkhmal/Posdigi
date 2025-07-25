@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_stock');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
+            $table->integer('jumlah')->default(1);
             $table->enum('status', ['pending', 'approved', 'rejected', 'returned'])->default('pending');
             $table->timestamps();
 
@@ -33,4 +34,5 @@ return new class extends Migration
         Schema::dropIfExists('peminjamen');
     }
 };
+
 

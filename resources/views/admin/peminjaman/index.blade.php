@@ -16,6 +16,7 @@
                     <th>No</th>
                     <th>Peminjam</th>
                     <th>Buku</th>
+                    <th>Jumlah</th>
                     <th>Tanggal Pinjam</th>
                     <th>Tanggal Kembali</th>
                     <th>Status</th>
@@ -28,6 +29,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $peminjaman->user->name }}</td>
                     <td>{{ $peminjaman->stock->buku->judul_buku }}</td>
+                    <td>{{ $peminjaman->jumlah }}</td>
                     <td>{{ $peminjaman->tanggal_pinjam->format('d/m/Y') }}</td>
                     <td>{{ $peminjaman->tanggal_kembali->format('d/m/Y') }}</td>
                     <td>
@@ -75,4 +77,5 @@
     </div>
 </div>
 @endsection
+
 

@@ -38,6 +38,14 @@
                 <div class="error">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="form-group">
+            <label for="jumlah">Jumlah:</label>
+            <input type="number" id="jumlah" name="jumlah" value="{{ old('jumlah', 1) }}" min="1" required>
+            @error('jumlah')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
         
         <div class="form-group">
             <label for="tanggal_pinjam">Tanggal Pinjam:</label>
