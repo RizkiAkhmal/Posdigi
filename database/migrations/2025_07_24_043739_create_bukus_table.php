@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('foto');
             $table->string('kode_buku');
             $table->string('judul_buku');
+            $table->string('penerbit');
+            $table->string('pengarang');
             $table->unsignedBigInteger('id_sub_kategori');
             $table->timestamps();
 

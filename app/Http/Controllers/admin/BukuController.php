@@ -28,6 +28,8 @@ class BukuController extends Controller
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'kode_buku' => 'required|string|max:255|unique:bukus,kode_buku',
             'judul_buku' => 'required|string|max:255',
+            'penerbit' => 'nullable|string|max:255',
+            'pengarang' => 'nullable|string|max:255',
             'id_sub_kategori' => 'required|exists:sub_kategoris,id'
         ]);
 
@@ -37,6 +39,8 @@ class BukuController extends Controller
             'foto' => $fotoPath,
             'kode_buku' => $request->kode_buku,
             'judul_buku' => $request->judul_buku,
+            'penerbit' => $request->penerbit,
+            'pengarang' => $request->pengarang,
             'id_sub_kategori' => $request->id_sub_kategori
         ]);
 
@@ -62,17 +66,20 @@ class BukuController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'kode_buku' => 'required|string|max:255|unique:bukus,kode_buku,' . $buku->id,
             'judul_buku' => 'required|string|max:255',
+            'penerbit' => 'nullable|string|max:255',
+            'pengarang' => 'nullable|string|max:255',
             'id_sub_kategori' => 'required|exists:sub_kategoris,id'
         ]);
 
         $data = [
             'kode_buku' => $request->kode_buku,
             'judul_buku' => $request->judul_buku,
+            'penerbit' => $request->penerbit,
+            'pengarang' => $request->pengarang,
             'id_sub_kategori' => $request->id_sub_kategori
         ];
 
         if ($request->hasFile('foto')) {
-            // Hapus foto lama
             if ($buku->foto) {
                 Storage::disk('public')->delete($buku->foto);
             }
@@ -98,3 +105,4 @@ class BukuController extends Controller
             ->with('success', 'Buku berhasil dihapus');
     }
 }
+

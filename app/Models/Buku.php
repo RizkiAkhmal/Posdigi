@@ -13,6 +13,8 @@ class Buku extends Model
         'foto',
         'kode_buku',
         'judul_buku',
+        'penerbit',
+        'pengarang',
         'id_sub_kategori'
     ];
 

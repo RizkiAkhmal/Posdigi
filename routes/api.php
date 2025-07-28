@@ -3,9 +3,10 @@
 use App\Http\Controllers\api\AuthApiController;
 use App\Http\Controllers\api\SubKategoriApiController;
 use App\Http\Controllers\api\BukuApiController;
+use App\Http\Controllers\api\KategoriApiController as ApiKategoriApiController;
 use App\Http\Controllers\api\StockApiController;
 use App\Http\Controllers\api\PeminjamanApiController;
-use App\Http\Controllers\KategoriApiController;
+use App\Http\Controllers\api\KategoriApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthApiController::class, 'logout']);
     Route::get('/profile', [AuthApiController::class, 'profile']);
     
-    // Master Data API
-    Route::get('/kategoris', [KategoriApiController::class, 'index']);
-    Route::get('/subkategoris', [SubKategoriApiController::class, 'index']);
-    Route::get('/bukus', [BukuApiController::class, 'index']);
-    Route::get('/stocks', [StockApiController::class, 'index']);
     
     // Peminjaman API
     Route::get('/peminjamans', [PeminjamanApiController::class, 'index']);
@@ -29,6 +25,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/peminjamans/{peminjaman}', [PeminjamanApiController::class, 'show']);
     Route::patch('/peminjamans/{peminjaman}/cancel', [PeminjamanApiController::class, 'cancel']);
 });
+// Master Data API
+Route::get('/kategoris', [KategoriApiController::class, 'index']);
+Route::get('/subkategoris', [SubKategoriApiController::class, 'index']);
+Route::get('/bukus', [BukuApiController::class, 'index']);
+Route::get('/stocks', [StockApiController::class, 'index']);
 
 // Frontend API - All data endpoint
 Route::get('/fe', function () {
