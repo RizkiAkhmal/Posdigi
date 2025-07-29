@@ -35,6 +35,11 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Stock::class, 'id_stock');
     }
+
+    public function pengembalians()
+    {
+        return $this->hasMany(Pengembalian::class, 'id_peminjaman');
+    }
 }
 
 

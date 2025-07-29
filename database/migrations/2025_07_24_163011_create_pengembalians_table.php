@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_peminjaman');
+            $table->string('nama_pengembali');
+            $table->date('tanggal_pinjam');
+            $table->date('tanggal_kembali');
+            $table->string('jumlah_kembali');
+            $table->enum('status', ['pending', 'approved', 'rejected', 'returned'])->default('pending');
+            $table->enum('kondisi_buku', ['baik', 'rusak', 'hilang']); 
+            $table->decimal('biaya_denda', 12, 2)->default(0);
+
+            $table->foreign('id_peminjaman')->references('id')->on('peminjamans')->onDelete('cascade');
             $table->timestamps();
         });
     }

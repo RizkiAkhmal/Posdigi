@@ -19,6 +19,13 @@ class PeminjamanController extends Controller
         return view('admin.peminjaman.index', compact('peminjamans'));
     }
 
+
+    public function show(Peminjaman $peminjaman)
+    {
+        $peminjaman->load(['user', 'stock.buku']);
+        return view('admin.peminjaman.show', compact('peminjaman'));
+    }
+
     public function create()
     {
         $users = User::all();
@@ -48,12 +55,6 @@ class PeminjamanController extends Controller
 
         return redirect()->route('admin.peminjaman.index')
             ->with('success', 'Peminjaman berhasil ditambahkan');
-    }
-
-    public function show(Peminjaman $peminjaman)
-    {
-        $peminjaman->load(['user', 'stock.buku']);
-        return view('admin.peminjaman.show', compact('peminjaman'));
     }
 
     public function edit(Peminjaman $peminjaman)
@@ -151,3 +152,4 @@ class PeminjamanController extends Controller
             ->with('success', 'Peminjaman berhasil dihapus');
     }
 }
+

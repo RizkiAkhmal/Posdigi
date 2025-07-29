@@ -6,7 +6,6 @@
 <div class="card">
     <div class="card-header">
         <h2>Data Peminjaman</h2>
-        <a href="{{ route('admin.peminjaman.create') }}" class="btn btn-primary">Tambah Peminjaman</a>
     </div>
 
     <div class="card-body">
@@ -77,5 +76,6 @@
     </div>
 </div>
 @endsection
+
 
 
