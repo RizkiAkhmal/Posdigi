@@ -7,7 +7,9 @@ use App\Http\Controllers\admin\SubKategoriController;
 use App\Http\Controllers\admin\BukuController;
 use App\Http\Controllers\admin\PeminjamanController;
 use App\Http\Controllers\admin\StockController;
-use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\UserController as AdminUserController;
+use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\user\UserPeminjamanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -79,12 +81,27 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
 });
 
-// User routes (protected)
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/user', function () {
-        return view('user.dashboard');
-    })->name('user.dashboard');
+// User routes
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/buku', [UserController::class, 'bukuIndex'])->name('buku.index');
+    Route::get('/buku/{buku}', [UserController::class, 'bukuShow'])->name('buku.show');
+    
+    // Peminjaman routes untuk user
+    Route::get('/peminjaman', [UserPeminjamanController::class, 'index'])->name('peminjaman.index');
+    Route::get('/peminjaman/create/{stock?}', [UserPeminjamanController::class, 'create'])->name('peminjaman.create');
+    Route::post('/peminjaman', [UserPeminjamanController::class, 'store'])->name('peminjaman.store');
+    Route::get('/peminjaman/{peminjaman}', [UserPeminjamanController::class, 'show'])->name('peminjaman.show');
+    Route::patch('/peminjaman/{peminjaman}/cancel', [UserPeminjamanController::class, 'cancel'])->name('peminjaman.cancel');
+    
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 });
+
+// Admin routes - gunakan AdminUserController untuk manage users
+Route::resource('user', AdminUserController::class);
+
+
+
 
 
 

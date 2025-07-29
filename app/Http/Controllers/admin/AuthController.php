@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -21,7 +20,14 @@ class AuthController extends Controller
         ]);
 
         if (auth()->attempt($credentials)) {
-            return redirect()->intended('admin/dashboard');
+            $user = auth()->user();
+            
+            // Redirect berdasarkan role
+            if ($user->hasRole('admin')) {
+                return redirect()->intended('admin/dashboard');
+            } else {
+                return redirect()->intended('user/dashboard');
+            }
         }
 
         return back()->withErrors([
@@ -36,4 +42,5 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 }
+
 

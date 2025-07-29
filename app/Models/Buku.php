@@ -26,7 +26,7 @@ class Buku extends Model
         return $this->belongsTo(SubKategori::class, 'id_sub_kategori');
     }
 
-    public function stock()
+    public function stocks()
     {
         return $this->hasOne(Stock::class, 'id_buku');
     }
