@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('judul_buku');
             $table->string('penerbit');
             $table->string('pengarang');
+            $table->string('tahun_terbit');
+            $table->string('halaman');
+            $table->string('sinopsis');
             $table->unsignedBigInteger('id_sub_kategori');
             $table->timestamps();
 

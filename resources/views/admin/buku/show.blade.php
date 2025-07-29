@@ -37,6 +37,18 @@
                         <td>{{ $buku->pengarang ?? '-' }}</td>
                     </tr>
                     <tr>
+                        <td><strong>Tahun Terbit:</strong></td>
+                        <td>{{ $buku->tahun_terbit ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Halaman:</strong></td>
+                        <td>{{ $buku->halaman ?? '-' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sinopsis:</strong></td>
+                        <td>{{ $buku->sinopsis ?? '-' }}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Sub Kategori:</strong></td>
                         <td>{{ $buku->subKategoris->nama_sub_kategori ?? '-' }}</td>
                     </tr>
@@ -62,3 +74,4 @@
         </div>
     </div>
 @endsection
+

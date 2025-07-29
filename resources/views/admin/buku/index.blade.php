@@ -21,6 +21,8 @@
                 <th>Judul Buku</th>
                 <th>Penerbit</th>
                 <th>Pengarang</th>
+                <th>Tahun Terbit</th>
+                <th>Halaman</th>
                 <th>Sub Kategori</th>
                 <th>Aksi</th>
             </tr>
@@ -31,7 +33,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>
                     @if($buku->foto)
-                        <img src=" {{ url("storage/" . $buku->foto)}}" alt="Foto Buku" style="width: 50px; height: 70px; object-fit: cover;">
+                        <img src="{{ asset('storage/' . $buku->foto) }}" alt="Foto Buku" style="width: 50px; height: 70px; object-fit: cover;">
                     @else
                         <span>No Image</span>
                     @endif
@@ -40,6 +42,8 @@
                 <td>{{ $buku->judul_buku }}</td>
                 <td>{{ $buku->penerbit ?? '-' }}</td>
                 <td>{{ $buku->pengarang ?? '-' }}</td>
+                <td>{{ $buku->tahun_terbit ?? '-' }}</td>
+                <td>{{ $buku->halaman ?? '-' }}</td>
                 <td>{{ $buku->subKategoris->nama_sub_kategori ?? '-' }}</td>
                 <td>
                     <a href="{{ route('admin.buku.show', $buku) }}" class="btn btn-info">Detail</a>
@@ -56,4 +60,5 @@
     </table>
 </div>
 @endsection
+
 

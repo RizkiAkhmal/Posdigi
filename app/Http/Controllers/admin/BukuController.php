@@ -30,6 +30,9 @@ class BukuController extends Controller
             'judul_buku' => 'required|string|max:255',
             'penerbit' => 'nullable|string|max:255',
             'pengarang' => 'nullable|string|max:255',
+            'tahun_terbit' => 'nullable|string|max:255',
+            'halaman' => 'nullable|string|max:255',
+            'sinopsis' => 'nullable|string|max:255',
             'id_sub_kategori' => 'required|exists:sub_kategoris,id'
         ]);
 
@@ -41,6 +44,9 @@ class BukuController extends Controller
             'judul_buku' => $request->judul_buku,
             'penerbit' => $request->penerbit,
             'pengarang' => $request->pengarang,
+            'tahun_terbit' => $request->tahun_terbit,
+            'halaman' => $request->halaman,
+            'sinopsis' => $request->sinopsis,
             'id_sub_kategori' => $request->id_sub_kategori
         ]);
 
@@ -68,6 +74,9 @@ class BukuController extends Controller
             'judul_buku' => 'required|string|max:255',
             'penerbit' => 'nullable|string|max:255',
             'pengarang' => 'nullable|string|max:255',
+            'tahun_terbit' => 'nullable|string|max:255',
+            'halaman' => 'nullable|string|max:255',
+            'sinopsis' => 'nullable|string|max:255',
             'id_sub_kategori' => 'required|exists:sub_kategoris,id'
         ]);
 
@@ -76,6 +85,9 @@ class BukuController extends Controller
             'judul_buku' => $request->judul_buku,
             'penerbit' => $request->penerbit,
             'pengarang' => $request->pengarang,
+            'tahun_terbit' => $request->tahun_terbit,
+            'halaman' => $request->halaman,
+            'sinopsis' => $request->sinopsis,
             'id_sub_kategori' => $request->id_sub_kategori
         ];
 

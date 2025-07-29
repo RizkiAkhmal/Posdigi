@@ -55,7 +55,31 @@
                 <div class="error">{{ $message }}</div>
             @enderror
         </div>
-        
+
+        <div class="form-group">
+            <label for="tahun_terbit">Tahun Terbit:</label>
+            <input type="text" id="tahun_terbit" name="tahun_terbit" value="{{ old('tahun_terbit', $buku->tahun_terbit) }}">
+            @error('tahun_terbit')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="halaman">Halaman:</label>
+            <input type="text" id="halaman" name="halaman" value="{{ old('halaman', $buku->halaman) }}">
+            @error('halaman')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="sinopsis">Sinopsis:</label>
+            <textarea id="sinopsis" name="sinopsis" rows="4">{{ old('sinopsis', $buku->sinopsis) }}</textarea>
+            @error('sinopsis')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
+
         <div class="form-group">
             <label for="id_sub_kategori">Sub Kategori:</label>
             <select id="id_sub_kategori" name="id_sub_kategori" required>
@@ -78,5 +102,6 @@
     </form>
 </div>
 @endsection
+
 
 
