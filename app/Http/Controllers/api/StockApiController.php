@@ -21,9 +21,14 @@ class StockApiController extends Controller
                 'updated_at' => $stock->updated_at,
                 'buku' => [
                     'id' => $stock->buku->id,
-                    'foto' => $stock->buku->foto,
+                    'foto' => $stock->buku->foto ? url('storage/' . $stock->buku->foto) : null,
                     'kode_buku' => $stock->buku->kode_buku,
                     'judul_buku' => $stock->buku->judul_buku,
+                    'penerbit' => $stock->buku->penerbit,
+                    'pengarang' => $stock->buku->pengarang,
+                    'tahun_terbit' => $stock->buku->tahun_terbit,
+                    'halaman' => $stock->buku->halaman,
+                    'sinopsis' => $stock->buku->sinopsis,
                     'sub_kategori' => [
                         'id' => $stock->buku->subKategoris->id ?? null,
                         'nama_sub_kategori' => $stock->buku->subKategoris->nama_sub_kategori ?? null,
